@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       "Company profile bilingual MI AL HAQ, Madrasah Ibtidaiyah sejak 1978 dengan Kurikulum Merdeka, Kurikulum Berbasis Cinta, dan pembinaan akhlakul karimah.",
     type: "website",
   },
-  metadataBase: new URL("https://mia-alfaq.example"),
+  metadataBase: new URL("https://mialhaq.lium.site"),
 };
 
 export default function RootLayout({
