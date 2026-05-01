@@ -1,0 +1,7 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="800" rx="64" fill="#F8FAF7"/>
+<circle cx="400" cy="300" r="116" fill="#064E3B"/>
+<path d="M240 684C262 585 330 532 400 532C470 532 538 585 560 684H240Z" fill="#0F766E"/>
+<rect x="184" y="184" width="432" height="432" rx="216" stroke="#D6A94A" stroke-width="8" opacity="0.4"/>
+<text x="400" y="742" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#10231D">MIA AL HAQ</text>
+</svg>

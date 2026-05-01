@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #10231d;
+  --font-sans: "Inter", "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+section[id] {
+  scroll-margin-top: 126px;
+}
+
+@media (min-width: 1024px) {
+  section[id] {
+    scroll-margin-top: 154px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(15, 118, 110, 0.14);
+  color: #064e3b;
+}
+
+.pattern-dot {
+  background-image: radial-gradient(circle at 1px 1px, rgba(15, 118, 110, 0.12) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.hero-school {
+  background-image:
+    linear-gradient(90deg, rgba(6, 78, 59, 0.86), rgba(6, 78, 59, 0.58) 48%, rgba(6, 78, 59, 0.12)),
+    url("/placeholders/school-hero.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.section-rule {
+  background: linear-gradient(90deg, rgba(15, 118, 110, 0.38), rgba(214, 169, 74, 0.36), transparent);
+}
+
+.glass-card {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+}

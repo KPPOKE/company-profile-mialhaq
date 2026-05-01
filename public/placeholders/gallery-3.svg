@@ -1,0 +1,7 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="900" rx="56" fill="#ECFDF5"/>
+<rect x="96" y="96" width="1008" height="708" rx="36" fill="#FFFFFF" stroke="#D6A94A" stroke-opacity="0.35"/>
+<path d="M204 696L430 482L596 588L768 416L1000 696H204Z" fill="#0F766E"/>
+<circle cx="904" cy="244" r="92" fill="#D6A94A" fill-opacity="0.28"/>
+<text x="140" y="160" font-family="Arial, sans-serif" font-size="44" fill="#064E3B">Events</text>
+</svg>

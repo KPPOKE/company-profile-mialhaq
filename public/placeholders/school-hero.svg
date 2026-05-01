@@ -1,0 +1,27 @@
+<svg width="1800" height="1200" viewBox="0 0 1800 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1800" height="1200" fill="#F8FAF7"/>
+<rect y="820" width="1800" height="380" fill="#ECFDF5"/>
+<path d="M0 810H1800" stroke="#DCEBDD" stroke-width="6"/>
+<rect x="725" y="355" width="590" height="470" rx="10" fill="#FFFFFF" stroke="#C9E6D7" stroke-width="6"/>
+<rect x="780" y="445" width="112" height="152" rx="6" fill="#ECFDF5"/>
+<rect x="943" y="445" width="112" height="152" rx="6" fill="#ECFDF5"/>
+<rect x="1106" y="445" width="112" height="152" rx="6" fill="#ECFDF5"/>
+<rect x="944" y="650" width="148" height="175" rx="8" fill="#064E3B"/>
+<path d="M675 356L1020 175L1365 356H675Z" fill="#0F766E"/>
+<path d="M804 335L1020 225L1236 335H804Z" fill="#D6A94A" fill-opacity="0.78"/>
+<rect x="455" y="520" width="300" height="305" rx="10" fill="#FFFFFF" stroke="#C9E6D7" stroke-width="6"/>
+<rect x="508" y="590" width="80" height="118" rx="6" fill="#ECFDF5"/>
+<rect x="622" y="590" width="80" height="118" rx="6" fill="#ECFDF5"/>
+<path d="M420 520L605 390L790 520H420Z" fill="#0F766E"/>
+<rect x="1248" y="565" width="260" height="260" rx="10" fill="#FFFFFF" stroke="#C9E6D7" stroke-width="6"/>
+<rect x="1302" y="630" width="70" height="108" rx="6" fill="#ECFDF5"/>
+<rect x="1395" y="630" width="70" height="108" rx="6" fill="#ECFDF5"/>
+<path d="M1218 565L1378 455L1538 565H1218Z" fill="#064E3B"/>
+<path d="M275 824C326 746 388 712 455 722C525 733 566 782 623 824H275Z" fill="#0F766E" fill-opacity="0.28"/>
+<path d="M1175 824C1250 744 1335 720 1430 746C1492 763 1540 793 1595 824H1175Z" fill="#0F766E" fill-opacity="0.22"/>
+<circle cx="1630" cy="220" r="88" fill="#D6A94A" fill-opacity="0.25"/>
+<circle cx="1658" cy="200" r="88" fill="#F8FAF7"/>
+<path d="M188 830C188 730 264 650 360 650C456 650 532 730 532 830" stroke="#064E3B" stroke-width="18" stroke-linecap="round" opacity="0.24"/>
+<path d="M1540 842C1540 744 1614 666 1707 666C1800 666 1874 744 1874 842" stroke="#064E3B" stroke-width="18" stroke-linecap="round" opacity="0.2"/>
+<rect x="300" y="865" width="1230" height="22" rx="11" fill="#D6A94A" fill-opacity="0.5"/>
+</svg>

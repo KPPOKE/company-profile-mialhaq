@@ -1,0 +1,18 @@
+.next/
+node_modules/
+
+# Local logs
+*.log
+dev.err
+dev.out
+
+# Local QA screenshots and Playwright MCP output
+.playwright-mcp/
+qa*.png
+mobile-*.png
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.env*
+!.env.example
