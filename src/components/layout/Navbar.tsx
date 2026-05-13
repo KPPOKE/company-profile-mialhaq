@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { useSite } from "@/components/layout/SiteContext";
 import { translations } from "@/data/translations";
-import { getSectionIdFromPath, getSectionScrollTop, scrollToSectionId } from "@/lib/navigation";
+import { getSectionIdFromPath, getSectionPathFromId, getSectionScrollTop, scrollToSectionId } from "@/lib/navigation";
 
 const navItems = [
   { id: "home", href: "/", sectionId: "home" },
@@ -59,6 +59,15 @@ export function Navbar() {
       pendingSection.current = sectionId;
     };
 
+    const setActiveAndSyncUrl = (sectionId: SectionId) => {
+      setActiveSection(sectionId);
+
+      const nextPath = getSectionPathFromId(sectionId);
+      if (window.location.pathname !== nextPath) {
+        window.history.replaceState(null, "", nextPath);
+      }
+    };
+
     const updateActiveSection = () => {
       const viewportAnchor = window.scrollY + 96;
       const pageBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
@@ -77,7 +86,7 @@ export function Navbar() {
       }
 
       if (pageBottom) {
-        setActiveSection(navItems[navItems.length - 1].sectionId);
+        setActiveAndSyncUrl(navItems[navItems.length - 1].sectionId);
         return;
       }
 
@@ -88,7 +97,7 @@ export function Navbar() {
         return section.offsetTop <= viewportAnchor ? item.sectionId : active;
       }, "home");
 
-      setActiveSection(current);
+      setActiveAndSyncUrl(current);
     };
 
     const onSectionNavigate = (event: Event) => {

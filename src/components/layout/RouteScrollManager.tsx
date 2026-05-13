@@ -5,32 +5,49 @@ import { getSectionIdFromPath, scrollToSectionId } from "@/lib/navigation";
 
 export function RouteScrollManager() {
   useEffect(() => {
-    const scrollToCurrentPath = (behavior: ScrollBehavior) => {
+    let userInteracted = false;
+
+    const markUserInteraction = () => {
+      userInteracted = true;
+    };
+
+    const scrollToCurrentPath = (behavior: ScrollBehavior, alignHome = false) => {
       const sectionId = getSectionIdFromPath(window.location.pathname);
       if (!sectionId) return;
 
       window.dispatchEvent(new CustomEvent("section:navigate", { detail: sectionId }));
 
+      if (sectionId === "home" && !alignHome) return;
+
       requestAnimationFrame(() => scrollToSectionId(sectionId, behavior));
 
-      // Deep sections can shift slightly while images/fonts finish layout.
-      // Re-align shortly after mount so clean routes land at the same polished
-      // position as navbar clicks without changing the visible URL.
-      [160, 480, 900, 1500, 2300].forEach((delay) => {
-        window.setTimeout(() => {
-          if (getSectionIdFromPath(window.location.pathname) === sectionId) {
-            window.dispatchEvent(new CustomEvent("section:navigate", { detail: sectionId }));
-            scrollToSectionId(sectionId, "auto");
-          }
-        }, delay);
-      });
+      if (sectionId === "home") return;
+
+      window.setTimeout(() => {
+        if (!userInteracted && getSectionIdFromPath(window.location.pathname) === sectionId) {
+          window.dispatchEvent(new CustomEvent("section:navigate", { detail: sectionId }));
+          scrollToSectionId(sectionId, "auto");
+        }
+      }, 260);
     };
 
-    scrollToCurrentPath("auto");
+    scrollToCurrentPath("auto", false);
 
-    const onPopState = () => scrollToCurrentPath("smooth");
+    window.addEventListener("wheel", markUserInteraction, { passive: true });
+    window.addEventListener("touchstart", markUserInteraction, { passive: true });
+    window.addEventListener("keydown", markUserInteraction);
+
+    const onPopState = () => {
+      userInteracted = false;
+      scrollToCurrentPath("smooth", true);
+    };
     window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
+    return () => {
+      window.removeEventListener("wheel", markUserInteraction);
+      window.removeEventListener("touchstart", markUserInteraction);
+      window.removeEventListener("keydown", markUserInteraction);
+      window.removeEventListener("popstate", onPopState);
+    };
   }, []);
 
   return null;

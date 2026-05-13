@@ -10,9 +10,18 @@ export const sectionRoutes = {
 } as const;
 
 export type SectionPath = keyof typeof sectionRoutes;
+export type SectionId = (typeof sectionRoutes)[SectionPath];
+
+export const sectionPathsById = Object.fromEntries(
+  Object.entries(sectionRoutes).map(([path, sectionId]) => [sectionId, path]),
+) as Record<SectionId, SectionPath>;
 
 export function getSectionIdFromPath(pathname: string) {
   return sectionRoutes[pathname as SectionPath] ?? null;
+}
+
+export function getSectionPathFromId(sectionId: SectionId) {
+  return sectionPathsById[sectionId];
 }
 
 export function getSectionScrollTop(sectionId: string) {
