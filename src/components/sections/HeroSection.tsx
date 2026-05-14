@@ -5,7 +5,7 @@ import { ArrowRight, BookOpenCheck, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { translations } from "@/data/translations";
-import { schoolStats } from "@/data/school";
+import { schoolLinks, schoolStats } from "@/data/school";
 import { useSite } from "@/components/layout/SiteContext";
 
 const heroGroup: Variants = {
@@ -63,7 +63,7 @@ export function HeroSection() {
 
           <motion.div variants={heroItem} className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
             <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
-              <Button href="/ppdb" className="rounded-full bg-white text-deep hover:bg-soft" size="lg">
+              <Button href={schoolLinks.ppdbOnline} target="_blank" rel="noreferrer" className="rounded-full bg-white text-deep hover:bg-soft" size="lg">
                 {t.hero.ctaPrimary}
                 <ArrowRight size={16} />
               </Button>

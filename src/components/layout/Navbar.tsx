@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { useSite } from "@/components/layout/SiteContext";
 import { translations } from "@/data/translations";
+import { schoolLinks } from "@/data/school";
 import { getSectionIdFromPath, getSectionPathFromId, getSectionScrollTop, scrollToSectionId } from "@/lib/navigation";
 
 const navItems = [
@@ -185,10 +186,10 @@ export function Navbar() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <LanguageSwitcher />
-            <Button href="/login-sia" variant="outline" size="sm" className="rounded-full">
+            <Button href={schoolLinks.siaLogin} target="_blank" rel="noreferrer" variant="outline" size="sm" className="rounded-full">
               {t.nav.loginSia}
             </Button>
-            <Button href="/ppdb" variant="default" size="sm" className="rounded-full">
+            <Button href={schoolLinks.ppdbOnline} target="_blank" rel="noreferrer" variant="default" size="sm" className="rounded-full">
               {t.nav.ppdb}
             </Button>
           </div>
@@ -236,10 +237,10 @@ export function Navbar() {
                 <div className="mt-4 grid gap-3 sm:grid-cols-[auto_auto] sm:items-center">
                   <LanguageSwitcher variant="full" />
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <Button href="/login-sia" variant="outline" size="sm" className="rounded-full">
+                    <Button href={schoolLinks.siaLogin} target="_blank" rel="noreferrer" variant="outline" size="sm" className="rounded-full">
                       {t.nav.loginSia}
                     </Button>
-                    <Button href="/ppdb" variant="default" size="sm" className="rounded-full">
+                    <Button href={schoolLinks.ppdbOnline} target="_blank" rel="noreferrer" variant="default" size="sm" className="rounded-full">
                       {t.nav.ppdb}
                     </Button>
                   </div>

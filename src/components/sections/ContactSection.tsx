@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { contactInfo } from "@/data/school";
+import { contactInfo, schoolLinks } from "@/data/school";
 import { translations } from "@/data/translations";
 import { useSite } from "@/components/layout/SiteContext";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
@@ -138,7 +138,7 @@ export function ContactSection() {
                 <MessageCircle size={16} />
                 {t.contact.whatsappLabel}
               </Button>
-              <Button href="/ppdb" variant="outline" className="rounded-full">
+              <Button href={schoolLinks.ppdbOnline} target="_blank" rel="noreferrer" variant="outline" className="rounded-full">
                 {t.hero.ctaPrimary}
               </Button>
             </div>

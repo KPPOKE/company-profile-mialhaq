@@ -72,3 +72,8 @@ export const contactInfo = {
     { label: "Facebook", href: "https://facebook.com/miaalhaq" },
   ],
 };
+
+export const schoolLinks = {
+  siaLogin: "https://csk.lium.site",
+  ppdbOnline: "https://csk.lium.site/ppdb/daftar",
+};

@@ -1,20 +1,11 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://mia-alfaq.example";
+  const baseUrl = "https://mialhaq.lium.site";
+  const routes = ["/", "/profil", "/program", "/guru", "/galeri", "/berita", "/faq", "/kontak"];
 
-  return [
-    {
-      url: `${baseUrl}/`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/login-sia`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/ppdb`,
-      lastModified: new Date(),
-    },
-  ];
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+  }));
 }
