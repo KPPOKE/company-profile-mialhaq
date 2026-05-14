@@ -210,14 +210,15 @@ export function Navbar() {
         <AnimatePresence>
           {open ? (
             <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
+              initial={{ opacity: 0, y: -10, scale: 0.985 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.99 }}
+              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
               className="lg:hidden"
             >
               <div
-                className={`mt-4 max-h-[calc(100svh-96px)] overflow-y-auto rounded-lg border p-4 shadow-soft backdrop-blur-xl supports-[backdrop-filter]:bg-white/72 ${
-                  scrolled ? "border-emerald-100/60 bg-white/76" : "border-emerald-100 bg-white"
+                className={`mt-4 max-h-[calc(100svh-96px)] overflow-y-auto rounded-lg border p-4 shadow-soft ${
+                  scrolled ? "border-emerald-100/70 bg-white/95" : "border-emerald-100 bg-white"
                 }`}
               >
                 <div className="grid gap-2">
