@@ -4,7 +4,7 @@ import type { MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
@@ -207,49 +207,46 @@ export function Navbar() {
           </button>
         </div>
 
-        <AnimatePresence>
-          {open ? (
-            <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.985 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -8, scale: 0.99 }}
-              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden"
+        {open ? (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.985 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:hidden"
+          >
+            <div
+              className={`mt-4 max-h-[calc(100svh-96px)] overflow-y-auto rounded-lg border p-4 shadow-soft ${
+                scrolled ? "border-emerald-100/70 bg-white/95" : "border-emerald-100 bg-white"
+              }`}
             >
-              <div
-                className={`mt-4 max-h-[calc(100svh-96px)] overflow-y-auto rounded-lg border p-4 shadow-soft ${
-                  scrolled ? "border-emerald-100/70 bg-white/95" : "border-emerald-100 bg-white"
-                }`}
-              >
-                <div className="grid gap-2">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.id}
-                      href={item.href}
-                      onClick={(event) => scrollToSection(event, item.href, item.sectionId)}
-                      className={`rounded-lg px-4 py-3 text-sm font-medium transition ${
-                        activeSection === item.sectionId ? "bg-soft text-deep" : "text-text hover:bg-soft"
-                      }`}
-                    >
-                      {t.nav[item.id]}
-                    </a>
-                  ))}
-                </div>
-                <div className="mt-4 grid gap-3 sm:grid-cols-[auto_auto] sm:items-center">
-                  <LanguageSwitcher variant="full" />
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <Button href={schoolLinks.siaLogin} target="_blank" rel="noreferrer" variant="outline" size="sm" className="rounded-full">
-                      {t.nav.loginSia}
-                    </Button>
-                    <Button href={schoolLinks.ppdbOnline} target="_blank" rel="noreferrer" variant="default" size="sm" className="rounded-full">
-                      {t.nav.ppdb}
-                    </Button>
-                  </div>
+              <div className="grid gap-2">
+                {navItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    onClick={(event) => scrollToSection(event, item.href, item.sectionId)}
+                    className={`rounded-lg px-4 py-3 text-sm font-medium transition ${
+                      activeSection === item.sectionId ? "bg-soft text-deep" : "text-text hover:bg-soft"
+                    }`}
+                  >
+                    {t.nav[item.id]}
+                  </a>
+                ))}
+              </div>
+              <div className="mt-4 grid gap-3 sm:grid-cols-[auto_auto] sm:items-center">
+                <LanguageSwitcher variant="full" />
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <Button href={schoolLinks.siaLogin} target="_blank" rel="noreferrer" variant="outline" size="sm" className="rounded-full">
+                    {t.nav.loginSia}
+                  </Button>
+                  <Button href={schoolLinks.ppdbOnline} target="_blank" rel="noreferrer" variant="default" size="sm" className="rounded-full">
+                    {t.nav.ppdb}
+                  </Button>
                 </div>
               </div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+            </div>
+          </motion.div>
+        ) : null}
       </Container>
     </header>
   );
