@@ -13,11 +13,34 @@ import { useSite } from "@/components/layout/SiteContext";
 
 const filters: { key: "all" | GalleryCategory; labelId: string; labelEn: string }[] = [
   { key: "all", labelId: "Semua", labelEn: "All" },
-  { key: "learning", labelId: "Pembelajaran", labelEn: "Learning" },
-  { key: "religious", labelId: "Kegiatan Religius", labelEn: "Religious Activities" },
-  { key: "events", labelId: "Acara", labelEn: "Events" },
-  { key: "facilities", labelId: "Fasilitas", labelEn: "Facilities" },
+  { key: "religious", labelId: "Keagamaan", labelEn: "Religious" },
+  { key: "sports", labelId: "Olahraga", labelEn: "Sports" },
+  { key: "school", labelId: "Kegiatan Sekolah", labelEn: "School Activities" },
+  { key: "arts", labelId: "Seni & Ekstrakurikuler", labelEn: "Arts & Extracurricular" },
 ];
+
+function GalleryImage({
+  src,
+  fallbackSrc,
+  alt,
+}: {
+  src: string;
+  fallbackSrc: string;
+  alt: string;
+}) {
+  const [currentSrc, setCurrentSrc] = useState(src);
+
+  return (
+    <Image
+      src={currentSrc}
+      alt={alt}
+      fill
+      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+      className="object-cover transition-transform duration-500"
+      onError={() => setCurrentSrc(fallbackSrc)}
+    />
+  );
+}
 
 export function GallerySection() {
   const { language } = useSite();
@@ -85,12 +108,10 @@ export function GallerySection() {
               >
                 <Card className="overflow-hidden">
                   <div className="relative aspect-[4/3] bg-soft">
-                    <Image
+                    <GalleryImage
                       src={item.image}
                       alt={language === "id" ? item.titleId : item.titleEn}
-                      fill
-                      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-500"
+                      fallbackSrc={item.fallbackImage}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 text-white">
@@ -109,12 +130,15 @@ export function GallerySection() {
         </div>
       </Container>
 
-      <GalleryModal
-        open={Boolean(active)}
-        onClose={() => setActive(null)}
-        title={active ? (language === "id" ? active.titleId : active.titleEn) : ""}
-        image={active?.image ?? ""}
-      />
+      {active ? (
+        <GalleryModal
+          open
+          onClose={() => setActive(null)}
+          title={language === "id" ? active.titleId : active.titleEn}
+          image={active.image}
+          fallbackImage={active.fallbackImage}
+        />
+      ) : null}
     </section>
   );
 }

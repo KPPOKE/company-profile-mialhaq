@@ -12,7 +12,6 @@ import { ProgramsSection } from "@/components/sections/ProgramsSection";
 import { FacilitiesSection } from "@/components/sections/FacilitiesSection";
 import { TeachersSection } from "@/components/sections/TeachersSection";
 import { GallerySection } from "@/components/sections/GallerySection";
-import { VideoProfileSection } from "@/components/sections/VideoProfileSection";
 import { NewsSection } from "@/components/sections/NewsSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
@@ -41,7 +40,6 @@ export function MainPage() {
           <FacilitiesSection />
           <TeachersSection />
           <GallerySection />
-          <VideoProfileSection />
           <NewsSection />
           <TestimonialsSection />
           <FAQSection />

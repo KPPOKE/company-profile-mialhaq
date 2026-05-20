@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -10,12 +11,28 @@ export function GalleryModal({
   onClose,
   title,
   image,
+  fallbackImage,
 }: {
   open: boolean;
   onClose: () => void;
   title: string;
   image: string;
+  fallbackImage: string;
 }) {
+  const [mounted, setMounted] = useState(false);
+  const [currentImage, setCurrentImage] = useState("");
+  const displayImage = currentImage || image || fallbackImage;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      setCurrentImage(image || fallbackImage);
+    }
+  }, [fallbackImage, image, open]);
+
   useEffect(() => {
     if (!open) {
       return;
@@ -37,11 +54,15 @@ export function GalleryModal({
     };
   }, [open, onClose]);
 
-  return (
+  if (!mounted) {
+    return null;
+  }
+
+  const modal = (
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/62 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/62 p-4 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -75,7 +96,20 @@ export function GalleryModal({
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="relative min-h-[320px] bg-soft md:min-h-[520px]"
               >
-                <Image src={image} alt={title} fill sizes="100vw" className="object-cover" />
+                {displayImage ? (
+                  <Image
+                    src={displayImage}
+                    alt={title}
+                    fill
+                    sizes="(min-width: 768px) 60vw, 100vw"
+                    className="object-cover"
+                    onError={() => {
+                      if (fallbackImage && displayImage !== fallbackImage) {
+                        setCurrentImage(fallbackImage);
+                      }
+                    }}
+                  />
+                ) : null}
               </motion.div>
               <div className="flex items-end p-6 md:p-8">
                 <motion.div
@@ -98,4 +132,6 @@ export function GalleryModal({
       ) : null}
     </AnimatePresence>
   );
+
+  return createPortal(modal, document.body);
 }
